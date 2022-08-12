@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <h1>Add New Itenerary</h1>
+    <div>
+        <nav>
+            <a href="/itenerary"><button>Back</button></a>
+        </nav>
+        <form action="/itenerary/new" method="POST">
+            <input type="text" name="name" placeholder="Trip Name"/><br/>
+            <input type="Date" name="startDate" placeholder="Start Date"/><br/>
+            <input type="Date" name="endDate" placeholder="End Date"/><br/>
+            <input type="text" name="party" placeholder="Party Size"/><br/>
+            <input type="submit" value="Create New Itenerary"/><br/>
+        </form>
+    </div>
+</body>
+</html>

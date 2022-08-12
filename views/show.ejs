@@ -14,9 +14,15 @@
         <% for(let i = 0; i < Itenerary.trips.length; i++) { %> 
         <h2><%=Itenerary.trips[i].name%></h2>
         <ul>
+            <li><%=Itenerary.trips[i].transportationTo%></li>
+            <li><%=Itenerary.trips[i].transportation%></li>
             <li><%=Itenerary.trips[i].lodging%></li>
         </ul>
+        <a href="/trip/<%= Itenerary.trips[i]._id%>/edit"><button>Edit Trip</button></a> 
         <% } %> 
+        <nav>
+            <!-- <a href="/itenerary/<%= Itenerary._id%>/edit"><button>Edit Trip</button></a>  -->
+        </nav>
     </div>
    
 </body>

@@ -5,6 +5,7 @@ const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const Itenerary = require("./models/itenerarySchema");
+const Trip = require("./models/tripSchema");
 const itenerarySeed = require("./models/itenerary");
 const { response } = require('express');
 const app = express ();
@@ -56,6 +57,53 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 //         response.redirect("/itenerary")
 //     })
 // })
+
+app.delete("/itenerary/:id", (request, response)=> {
+    Itenerary.findByIdAndRemove(request.params.id, (error, data)=> {
+        response.redirect("/itenerary")
+    })
+})
+
+app.put("/trip/:id", (request, response)=> {
+    Trip.findByIdAndUpdate(request.params.id, request.body, {new: true}, (error, updateItenerary)=> {
+        console.log(error)
+        response.redirect("/itenerary")
+    })
+})
+
+
+app.get("/itenerary/:id/trip/:tripId/edit", (request, response)=> {
+    Itenerary.findById(request.params.id, (error, foundItenerary)=> {
+        const foundTrip = foundItenerary.trips.id(request.params.tripId)
+        response.render(
+            "editTrip.ejs",
+            {
+                Trip: foundTrip
+            }
+        )
+    })
+})
+
+app.get("/itenerary/:id/edit", (request, response)=> {
+    Itenerary.findById(request.params.id, (error, foundItenerary)=> {
+        response.render(
+            "edit.ejs",
+            {
+                Itenerary: foundItenerary
+            }
+        )
+    })
+})
+
+app.get("/itenerary/new", (request, response)=> {
+    response.render("new.ejs")
+})
+
+app.post("/itenerary/new", (request, response)=> {
+    Itenerary.create(request.body, (error, createItenerary)=> {
+        response.redirect("/itenerary")
+    })
+})
 
 
 app.get("/itenerary/:id", (request, response)=> {
