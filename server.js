@@ -5,7 +5,8 @@ const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const Itenerary = require("./models/itenerarySchema");
-const itenerarySeed = require("./models/itenerary")
+const itenerarySeed = require("./models/itenerary");
+const { response } = require('express');
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
@@ -82,8 +83,8 @@ app.get("/itenerary", (request, response)=> {
 
 //___________________
 //localhost:3000
-app.get('/' , (req, res) => {
-  console.log('Hello World!');
+app.get('/' , (request, response) => {
+  response.redirect("/itenerary");
 });
 
 //___________________
