@@ -4,6 +4,8 @@
 const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
+const Itenerary = require("./models/itenerarySchema");
+const itenerarySeed = require("./models/itenerary")
 const app = express ();
 const db = mongoose.connection;
 require('dotenv').config()
@@ -37,7 +39,7 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 app.use(express.static('public'));
 
 // populates req.body with parsed info from forms - if no data from forms will return an empty object {}
-app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
+app.use(express.urlencoded({ extended: true }));// extended: false - does not allow nested objects in query strings
 app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
 
 //use method override
@@ -46,10 +48,42 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 //___________________
 // Routes
+
+// app.get("/itenerary/seed", (request, response)=> {
+//     Itenerary.create(itenerarySeed, (error, data)=> {
+//         console.log(error)
+//         response.redirect("/itenerary")
+//     })
+// })
+
+
+app.get("/itenerary/:id", (request, response)=> {
+    Itenerary.findById(request.params.id, (error, foundItenerary)=> {
+        response.render(
+            "show.ejs",
+            {
+                Itenerary: foundItenerary
+            }
+        )
+    })
+})
+
+app.get("/itenerary", (request, response)=> {
+    Itenerary.find({}, (error, allContents)=> {
+        console.log(allContents)
+        response.render(
+            "index.ejs",
+            {
+                Itenerary: allContents
+            }
+        )
+    })
+})
+
 //___________________
 //localhost:3000
 app.get('/' , (req, res) => {
-  res.send('Hello World!');
+  console.log('Hello World!');
 });
 
 //___________________
