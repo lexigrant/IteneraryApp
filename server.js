@@ -6,6 +6,7 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const Itenerary = require("./models/itenerarySchema");
 const Trip = require("./models/tripSchema");
+const Activity = require("./models/activitySchema");
 const itenerarySeed = require("./models/itenerary");
 const { response } = require('express');
 const app = express ();
