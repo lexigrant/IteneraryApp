@@ -65,11 +65,16 @@ app.delete("/itenerary/:id", (request, response)=> {
     })
 })
 
-app.put("/trip/:id", (request, response)=> {
-    Trip.findByIdAndUpdate(request.params.id, request.body, {new: true}, (error, updateItenerary)=> {
-        console.log(error)
-        response.redirect("/itenerary")
+// Edit for trip
+app.put("/itenerary/:id/trip/:tripId/", (request, response)=> {
+    Itenerary.findById(request.params.id, (error, foundItenerary)=> {
+        const foundTrip = foundItenerary.trips.id(request.params.tripId);
+        foundTrip.set(request.body);
+        foundItenerary.save();
+        response.redirect(`/itenerary/${request.params.id}`)
+
     })
+  
 })
 
 
@@ -79,23 +84,31 @@ app.get("/itenerary/:id/trip/:tripId/edit", (request, response)=> {
         response.render(
             "editTrip.ejs",
             {
-                Trip: foundTrip
+                Trip: foundTrip,
+                IteneraryId: foundItenerary._id
             }
         )
+    })
+})
+
+// edit for itenerary
+app.put("/itenerary/:id", (request, response)=> {
+    Itenerary.findByIdAndUpdate(request.params.id, request.body, {new: true}, (error, updateItenerary)=> {
+        response.redirect("/itenerary")
     })
 })
 
 app.get("/itenerary/:id/edit", (request, response)=> {
     Itenerary.findById(request.params.id, (error, foundItenerary)=> {
         response.render(
-            "edit.ejs",
+            "editItenerary.ejs",
             {
                 Itenerary: foundItenerary
             }
         )
     })
 })
-
+// create new itenerary
 app.get("/itenerary/new", (request, response)=> {
     response.render("new.ejs")
 })
@@ -106,6 +119,14 @@ app.post("/itenerary/new", (request, response)=> {
     })
 })
 
+// create new activity
+app.get("/itenerary/:id/trip/:id/activity", (request, response)=> {
+    response.render("addActivity.ejs")
+})
+
+app.post("itenerary/:id/trip/:tripId/activity", (request, response)=> {
+    
+})
 
 app.get("/itenerary/:id", (request, response)=> {
     Itenerary.findById(request.params.id, (error, foundItenerary)=> {

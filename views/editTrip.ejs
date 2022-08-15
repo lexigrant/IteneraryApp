@@ -11,7 +11,7 @@
     <nav>
         <a href="/itenerary/"><button>Back</button></a>
     </nav>
-    <form action="/trip/<%=Trip._id%>?_method=PUT" method="POST">
+    <form action="/itenerary/<%=IteneraryId%>/trip/<%=Trip._id%>?_method=PUT" method="POST">
     <input type="text" name="transportationTo" value="<%=Trip.transportationTo%>" placeholder="Transportation to">
     <input type="text" name="transportation" value="<%=Trip.transportation%>" placeholder="Transportation">
     <input type="text" name="lodging" value="<%=Trip.lodging%>" placeholder="Lodging">

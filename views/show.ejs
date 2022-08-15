@@ -12,18 +12,28 @@
     </nav>
     <div>
         <% for(let i = 0; i < Itenerary.trips.length; i++) { %> 
+        <div class="trip">
         <h2><%=Itenerary.trips[i].name%></h2>
+        <a href="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id %>/edit"><button>Edit Trip</button></a> 
+        </div>
         <ul>
             <li><%=Itenerary.trips[i].transportationTo%></li>
             <li><%=Itenerary.trips[i].transportation%></li>
             <li><%=Itenerary.trips[i].lodging%></li>
         </ul>
-        <a href="/trip/<%= Itenerary.trips[i]._id%>/edit"><button>Edit Trip</button></a> 
-        <a href="/activity<%=Itenerary.trips.activity[i]._id%>/new "
+        <div class="activity">
+        <h3>Activities</h3>
+        <a href="/activity<%=Itenerary.trips[i].activities%>"><button>Add Activity</button></a>
+        </div>
+        <% for(let j = 0; j < Itenerary.trips[i].activities.length; j++) { %> 
+        <ul>
+            <li><%=Itenerary.trips[i].activities[j].name%></li>
+            <li><%=Itenerary.trips[i].activities[j].description%></li>
+            <li><%=Itenerary.trips[i].activities[j].address%></li>
+            <li><%=Itenerary.trips[i].activities[j].cost%></li>    
+        </ul>
         <% } %> 
-        <nav>
-            <!-- <a href="/itenerary/<%= Itenerary._id%>/edit"><button>Edit Trip</button></a>  -->
-        </nav>
+        <% } %> 
     </div>
    
 </body>
