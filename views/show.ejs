@@ -1,40 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-    <h1>Itenerary Details</h1>
+    <div class="addTrip">
+        <h1>Itenerary Details</h1>
+        <nav>
+            <a href="/itenerary/<%=Itenerary._id%>/trip/new"><button>Add Trip</button></a>
+        </nav>
+    </div>
     <nav>
         <a href="/itenerary/"><button>Back</button></a>
     </nav>
     <div>
-        <% for(let i = 0; i < Itenerary.trips.length; i++) { %> 
-        <div class="trip">
-        <h2><%=Itenerary.trips[i].name%></h2>
-        <a href="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id %>/edit"><button>Edit Trip</button></a> 
-        </div>
-        <ul>
-            <li><%=Itenerary.trips[i].transportationTo%></li>
-            <li><%=Itenerary.trips[i].transportation%></li>
-            <li><%=Itenerary.trips[i].lodging%></li>
-        </ul>
-        <div class="activity">
-        <h3>Activities</h3>
-        <a href="/activity<%=Itenerary.trips[i].activities%>"><button>Add Activity</button></a>
-        </div>
-        <% for(let j = 0; j < Itenerary.trips[i].activities.length; j++) { %> 
-        <ul>
-            <li><%=Itenerary.trips[i].activities[j].name%></li>
-            <li><%=Itenerary.trips[i].activities[j].description%></li>
-            <li><%=Itenerary.trips[i].activities[j].address%></li>
-            <li><%=Itenerary.trips[i].activities[j].cost%></li>    
-        </ul>
-        <% } %> 
-        <% } %> 
+        <% for(let i=0; i < Itenerary.trips.length; i++) { %>
+            <div class="trip">
+                <h2>
+                    <%=Itenerary.trips[i].name%>
+                </h2>
+                <a href="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id%>/edit"><button>Edit
+                        Trip</button></a>
+                        <form action="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id%>?_method=DELETE" method="POST">
+                            <input type="submit" value="DELETE">
+                        </form>
+            </div>
+            <ul>
+                <li>
+                    <%=Itenerary.trips[i].transportationTo%>
+                </li>
+                <li>
+                    <%=Itenerary.trips[i].transportation%>
+                </li>
+                <li>
+                    <%=Itenerary.trips[i].lodging%>
+                </li>
+            </ul>
+            <div class="activity">
+                <h3>Activities</h3>
+                <a href="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id%>/activity/new"><button>Add Activity</button></a>
+            </div>
+            <% for(let j=0; j < Itenerary.trips[i].activities.length; j++) { %>
+                <a href="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id%>/activity/<%=Itenerary.trips[i].activities[j]._id%>/edit"><button>Edit Activity</button></a>
+
+                <ul>
+                    <li>
+                        <%=Itenerary.trips[i].activities[j].name%>
+                    </li>
+                    <li>
+                        <%=Itenerary.trips[i].activities[j].description%>
+                    </li>
+                    <li>
+                        <%=Itenerary.trips[i].activities[j].address%>
+                    </li>
+                    <li>
+                        <%=Itenerary.trips[i].activities[j].cost%>
+                    </li>
+                </ul>
+                <% } %>
+                    <% } %>
     </div>
-   
+
 </body>
+
 </html>

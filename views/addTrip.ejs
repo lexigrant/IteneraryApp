@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+</head>
+<body>
+    <h1>Add a Trip</h1>
+    <nav>
+        <a href="/itenerary/<%= IteneraryId %>"><button>Back</button></a>
+    </nav>
+    <form action="/itenerary/<%=IteneraryId%>/trip/new/?_method=POST" method="POST">
+        <input type="text" name="name" placeholder="Location"/><br/>
+        <input type="text" name="transportationTo" placeholder="Transportation To"/><br/>
+        <input type="text" name="transportation" placeholder="Transportation"/><br/>
+        <input type="text" name="lodging" placeholder="Lodging"/><br/>
+        <input type="submit" value="Create New Trip"/><br/>
+    </form>
+</body>
+</html>

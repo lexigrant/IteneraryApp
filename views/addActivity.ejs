@@ -7,6 +7,18 @@
 
 </head>
 <body>
+    <div class="addActivity">
     <h1>Add Activity</h1>
+    <nav>
+        <a href="/itenerary/<%=IteneraryId%>/"><button>Back</button></a>
+    </nav>
+    </div>
+    <form action="/itenerary/<%=IteneraryId%>/trip/<%=TripId%>/activity/new" method="POST">
+        <input type="text" name="name" placeholder="Activity Name"/><br/>
+        <input type="text" name="description" placeholder="description"/><br/>
+        <input type="text" name="address" placeholder="Address"/><br/>
+        <input type="number" name="cost" placeholder="Activity cost"/><br/>
+        <input type="submit" value="Add New Activities"/><br/>
+    </form>
 </body>
 </html>

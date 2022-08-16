@@ -11,6 +11,12 @@
     <nav>
         <a href="/itenerary/"><button>Back</button></a>
     </nav>
-    
+    <form action="/itenerary/<%=Itenerary._id%>?_method=PUT" method="POST">
+        <input type="text" name="name" value="<%=Itenerary.name%>" placeholder="Name">
+        <input type="text" name="startDate" value="<%=Itenerary.startDate?.toDateString()%>" placeholder="Start Date">
+        <input type="text" name="endDate" value="<%=Itenerary.endDate?.toDateString()%>" placeholder="End Date">
+        <input type="text" name="party" value="<%=Itenerary.party%>" placeholder="Party Size">
+        <input type="submit" value="submit changes"/>
+        </form>
 </body>
 </html>

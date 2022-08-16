@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+</head>
+<body>
+    <h1>Edit Activities</h1>
+    <nav>
+        <a href="/itenerary/<%= IteneraryId %>"><button>Back</button></a>
+    </nav>
+    <form action="/itenerary/<%=IteneraryId%>/trip/<%=Trip._id%>/activity/<%=Activity._id%>?_method=PUT" method="POST">
+        <input type="text" name="name" value="<%=Activity.name%>" placeholder="Activity Name"/><br/>
+        <input type="text" name="description" value="<%=Activity.description%>" placeholder="description"/><br/>
+        <input type="text" name="address" value="<%=Activity.address%>" placeholder="Address"/><br/>
+        <input type="number" name="cost" value="<%=Activity.cost%>" placeholder="Activity cost"/><br/>
+        <input type="submit" value="Edit Activities"/><br/>
+        </form>
+</body>
+</html>

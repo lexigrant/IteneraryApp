@@ -9,7 +9,7 @@
 <body>
     <h1>Edit Trip</h1>
     <nav>
-        <a href="/itenerary/"><button>Back</button></a>
+        <a href="/itenerary/<%= IteneraryId %>"><button>Back</button></a>
     </nav>
     <form action="/itenerary/<%=IteneraryId%>/trip/<%=Trip._id%>?_method=PUT" method="POST">
     <input type="text" name="transportationTo" value="<%=Trip.transportationTo%>" placeholder="Transportation to">
