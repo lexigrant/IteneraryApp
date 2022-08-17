@@ -4,20 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
-<body>
+<body class="new">
+    <div class="addNew">
     <h1>Add New Itenerary</h1>
-    <div>
-        <nav>
-            <a href="/itenerary"><button>Back</button></a>
-        </nav>
-        <form action="/itenerary/new" method="POST">
-            <input type="text" name="name" placeholder="Trip Name"/><br/>
-            <input type="Date" name="startDate" placeholder="Start Date"/><br/>
-            <input type="Date" name="endDate" placeholder="End Date"/><br/>
-            <input type="text" name="party" placeholder="Party Size"/><br/>
-            <input type="submit" value="Create New Itenerary"/><br/>
+    <nav>
+        <a href="/itenerary"><button class="skyButton">Back</button></a>
+    </nav>
+    </div>
+        <div class="form-control-lg">
+        <form action="/itenerary/new" method="POST" class="text-center newForm">
+            <input class="form-control" type="text" name="name" placeholder="Trip Name"/><br/>
+            <input class="form-control" type="Date" name="startDate" placeholder="Start Date"/><br/>
+            <input class="form-control" type="Date" name="endDate" placeholder="End Date"/><br/>
+            <input class="form-control" type="text" name="party" placeholder="Party Size"/><br/>
+            <input class=" btn btn-light" type="submit" value="Create New Itenerary"/><br/>
         </form>
     </div>
 </body>

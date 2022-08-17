@@ -1,29 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d35e441530.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
-<body>
-    <h1>Your Trips</h1>
-    <nav>
-        <a href="/itenerary/new"><button>Create New itenerary</button></a>
-    </nav>
+
+<body class="new">
+    <div class="addNew">
+        <h1 class="yourItenerary">Your Itinerary's</h1>
+        <nav>
+            <a href="/itenerary/new"><button class="skyButton">Create New itenerary</button></a>
+        </nav>
+    </div>
     <ul>
-        <% for (let i = 0; i < Itenerary.length; i++) { %> 
-            <li>
-                <a href="/itenerary/<%=Itenerary[i]._id%>">
-                <%=Itenerary[i].name%></a><br/><%=Itenerary[i].startDate?.toDateString()%> - <%=Itenerary[i].endDate?.toDateString()%><br/>Party Size: <%=Itenerary[i].party%>
-                </a>
-                <form action="/itenerary/<%=Itenerary[i]._id%>?_method=DELETE" method="POST">
-                <input type="submit" value="DELETE">
-                </form>
-                <nav>
-                    <a href="/itenerary/<%= Itenerary[i]._id%>/edit"><button>Edit Itenerary</button></a> 
-                </nav>
-            </li> 
+        <% for (let i=0; i < Itenerary.length; i++) { %>
+            <li class="card border-0 boardingPass" style="width: 20rem; height: 20rem;">
+                <a href="/itenerary/<%=Itenerary[i]._id%>" class="location">
+                    <%=Itenerary[i].name%>
+                </a><br/>
+                <div class="dateDiv">
+                <%=Itenerary[i].startDate?.toDateString()%><i class="fa-solid fa-plane"></i> <%=Itenerary[i].endDate?.toDateString()%>
+                </div>
+                        <br/>Party Size: <%=Itenerary[i].party%>
+                        
+                            <div><img class="qrCode" src="/lgurl.png"></div>
+                            <div class="boardingPassActionsContainer">
+                            <form class="boardingPassAction" action="/itenerary/<%=Itenerary[i]._id%>?_method=DELETE" method="POST"
+                                class="text-center newForm">
+                                <input class=" del btn btn-outline-secondary" type="submit" value="DELETE">
+                            </form>
+                            <nav class="boardingPassAction">
+                                <a href="/itenerary/<%= Itenerary[i]._id%>/edit"><button class=" edit btn btn-outline-secondary">Edit
+                                        Itenerary</button></a>
+                            </nav>
+                        </div>
+                   
+                        
+            </li>
             <% } %>
     </ul>
 </body>
+
 </html>

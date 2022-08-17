@@ -1,16 +1,16 @@
 //___________________
 //Dependencies
 //___________________
-const express = require('express');
-const methodOverride = require('method-override');
-const mongoose = require('mongoose');
-const Itenerary = require("./models/itenerarySchema");
-const Trip = require("./models/tripSchema");
-const Activity = require("./models/activitySchema");
-const itenerarySeed = require("./models/itenerary");
-const { response } = require('express');
-const app = express();
-const db = mongoose.connection;
+const express = require('express')
+const methodOverride = require('method-override')
+const mongoose = require('mongoose')
+const Itenerary = require("./models/itenerarySchema")
+const Trip = require("./models/tripSchema")
+const Activity = require("./models/activitySchema")
+const itenerarySeed = require("./models/itenerary")
+const { response } = require('express')
+const app = express()
+const db = mongoose.connection
 require('dotenv').config()
 //___________________
 //Port
@@ -69,8 +69,18 @@ app.delete("/itenerary/:id", (request, response) => {
 app.delete("/itenerary/:id/trip/:tripId", (request, response) => {
     Itenerary.findById(request.params.id, (error, foundItenerary) => {
         foundItenerary.trips.id(request.params.tripId).remove()
-        foundItenerary.save();
-        response.redirect(`/itenerary/${request.params.id}`)
+        foundItenerary.save().then(()=> response.redirect(`/itenerary/${request.params.id}`) )
+        
+    })
+})
+
+// delete for activity
+app.delete("/itenerary/:id/trip/:tripId/activity/:activityId", (request, response)=> {
+    Itenerary.findById(request.params.id, (error, foundItenerary)=> {
+       const foundTrip = foundItenerary.trips.id(request.params.tripId)
+            foundTrip.activities.id(request.params.activityId).remove()
+            foundItenerary.save().then(()=> response.redirect(`/itenerary/${request.params.id}`))
+            
     })
 })
 
@@ -87,8 +97,8 @@ app.get("/itenerary/:id/trip/new", (request, response) => {
 app.post("/itenerary/:id/trip/new", (request, response) => {
     Itenerary.findById(request.params.id, (error, foundItenerary) => {
         foundItenerary.trips.push(request.body)
-        foundItenerary.save()
-        response.redirect(`/itenerary/${request.params.id}`)
+        foundItenerary.save().then(()=> response.redirect(`/itenerary/${request.params.id}`))
+        
     })
 })
 
@@ -118,8 +128,8 @@ app.put("/itenerary/:id/trip/:tripId/", (request, response) => {
     Itenerary.findById(request.params.id, (error, foundItenerary) => {
         const foundTrip = foundItenerary.trips.id(request.params.tripId)
         foundTrip.set(request.body)
-        foundItenerary.save()
-        response.redirect(`/itenerary/${request.params.id}`)
+        foundItenerary.save().then(()=> response.redirect(`/itenerary/${request.params.id}`))
+        
 
     })
 
@@ -140,19 +150,30 @@ app.get("/itenerary/:id/trip/:tripId/edit", (request, response) => {
 })
 
 // Edit Activity
-app.put("/itenerary/:id/trip/:tripId/activity/:activityId/edit", (request, response) => {
+app.put("/itenerary/:id/trip/:tripId/activity/:activityId/", (request, response) => {
     const params = request.params
     Itenerary.findById(params.id, (error, foundItenerary) => {
         const foundTrip = foundItenerary.trips.id(params.tripId)
         const foundActivity = foundTrip.activities.id(params.activityId)
         foundActivity.set(request.body)
-        foundItenerary.save()
-        response.redirect(`/itenerary/${params.id}`)
+        foundItenerary.save().then(()=> response.redirect(`/itenerary/${params.id}`))
+        
     })
 })
 
 app.get("/itenerary/:id/trip/:tripId/activity/:activityId/edit", (request, response)=> {
-
+    Itenerary.findById(request.params.id, (error, foundItenerary)=> {
+        const foundTrip = foundItenerary.trips.id(request.params.tripId)
+        const foundActivity = foundTrip.activities.id(request.params.activityId)
+        response.render(
+            "editActivity.ejs",
+            {
+                Activity: foundActivity,
+                Trip: foundTrip,
+                IteneraryId: foundItenerary._id
+            }
+        )
+    })
 })
 
     // edit for itenerary

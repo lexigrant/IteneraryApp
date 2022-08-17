@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
-<body>
-    <h1>Edit Trip</h1>
-    <nav>
-        <a href="/itenerary/<%= IteneraryId %>"><button>Back</button></a>
-    </nav>
-    <form action="/itenerary/<%=IteneraryId%>/trip/<%=Trip._id%>?_method=PUT" method="POST">
-    <input type="text" name="transportationTo" value="<%=Trip.transportationTo%>" placeholder="Transportation to">
-    <input type="text" name="transportation" value="<%=Trip.transportation%>" placeholder="Transportation">
-    <input type="text" name="lodging" value="<%=Trip.lodging%>" placeholder="Lodging">
-    <input type="submit" value="submit changes"/>
-    </form>
+
+<body class="new">
+    <div class="addNew">
+        <h1>Edit Trip</h1>
+        <nav>
+            <a href="/itenerary/<%= IteneraryId %>"><button class="skyButton">Back</button></a>
+        </nav>
+    </div>
+    <div class="form-control-lg">
+        <form action="/itenerary/<%=IteneraryId%>/trip/<%=Trip._id%>?_method=PUT" method="POST" class="text-center newForm">
+            <input class="form-control"  type="text" name="transportationTo" value="<%=Trip.transportationTo%>"
+                placeholder="Transportation to"><br/>
+            <input class="form-control"  type="text" name="transportation" value="<%=Trip.transportation%>" placeholder="Transportation"><br/>
+            <input class="form-control"  type="text" name="lodging" value="<%=Trip.lodging%>" placeholder="Lodging"><br/>
+            <input class=" btn btn-light" type="submit" value="submit changes" /><br/>
+        </form>
+    </div>
 </body>
+
 </html>

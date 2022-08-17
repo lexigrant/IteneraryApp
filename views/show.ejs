@@ -5,28 +5,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 
-<body>
-    <div class="addTrip">
+<body class="new">
+    <div class="addNew">
         <h1>Itenerary Details</h1>
         <nav>
-            <a href="/itenerary/<%=Itenerary._id%>/trip/new"><button>Add Trip</button></a>
+            <a href="/itenerary/"><button class="skyButton">Back</button></a>
         </nav>
     </div>
     <nav>
-        <a href="/itenerary/"><button>Back</button></a>
-    </nav>
+        <a href="/itenerary/<%=Itenerary._id%>/trip/new"><button class="addTrip btn-light">Add Trip</button></a>
+    </nav><br/>
     <div>
         <% for(let i=0; i < Itenerary.trips.length; i++) { %>
             <div class="trip">
                 <h2>
                     <%=Itenerary.trips[i].name%>
                 </h2>
-                <a href="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id%>/edit"><button>Edit
+                <a href="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id%>/edit"><button class="editTrip">Edit
                         Trip</button></a>
-                        <form action="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id%>?_method=DELETE" method="POST">
-                            <input type="submit" value="DELETE">
+                        <form  action="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id%>?_method=DELETE" method="POST">
+                            <input class="deleteTrip" type="submit" value="DELETE">
                         </form>
             </div>
             <ul>
@@ -46,7 +48,9 @@
             </div>
             <% for(let j=0; j < Itenerary.trips[i].activities.length; j++) { %>
                 <a href="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id%>/activity/<%=Itenerary.trips[i].activities[j]._id%>/edit"><button>Edit Activity</button></a>
-
+                <form action="/itenerary/<%=Itenerary._id%>/trip/<%=Itenerary.trips[i]._id%>/activity/<%=Itenerary.trips[i].activities[j]._id%>?_method=DELETE" method="POST">
+                    <input type="submit" value="DELETE">
+                </form>
                 <ul>
                     <li>
                         <%=Itenerary.trips[i].activities[j].name%>

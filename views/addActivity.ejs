@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
-<body>
-    <div class="addActivity">
+<body class="new">
+    <div class="addNew">
     <h1>Add Activity</h1>
     <nav>
-        <a href="/itenerary/<%=IteneraryId%>/"><button>Back</button></a>
+        <a href="/itenerary/<%=IteneraryId%>/"><button class="skyButton">Back</button></a>
     </nav>
     </div>
-    <form action="/itenerary/<%=IteneraryId%>/trip/<%=TripId%>/activity/new" method="POST">
-        <input type="text" name="name" placeholder="Activity Name"/><br/>
-        <input type="text" name="description" placeholder="description"/><br/>
-        <input type="text" name="address" placeholder="Address"/><br/>
-        <input type="number" name="cost" placeholder="Activity cost"/><br/>
-        <input type="submit" value="Add New Activities"/><br/>
+    <div class="form-control-lg">
+    <form action="/itenerary/<%=IteneraryId%>/trip/<%=TripId%>/activity/new" method="POST" class="text-center newForm">
+        <input class="form-control"  type="text" name="name" placeholder="Activity Name"/><br/>
+        <input class="form-control"  type="text" name="description" placeholder="description"/><br/>
+        <input class="form-control"  type="text" name="address" placeholder="Address"/><br/>
+        <input class="form-control"  type="number" name="cost" placeholder="Activity cost"/><br/>
+        <input class=" btn btn-light"  type="submit" value="Add New Activities"/><br/>
     </form>
+    </div>
 </body>
 </html>

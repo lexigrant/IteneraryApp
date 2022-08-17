@@ -1,0 +1,81 @@
+
+/* new.ejs styling */
+.new {
+    background-color: rgb(95,158,211);
+}
+
+.addNew {
+    text-align: center;
+    color: aliceblue;
+    margin-left: 30px;
+}
+.skyButton {
+    margin-right: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    color: black;
+    background-color: aliceblue;
+    float: right;
+    border: none;
+}
+.newForm {
+    margin-top: 50px;
+}
+/* index page */
+.location {
+    color: black;
+}
+.fa-plane {
+    margin-right: 10px;
+    margin-left: 15px;
+}
+.card {
+    padding: 5px;
+    margin: 10px;
+    background-color: aliceblue !important;
+}
+.dateDiv {
+    direction: flex;
+}
+.qrCode {
+    width: 120px;
+    float: right;
+    margin-right: 25px;
+    margin-top: 30px;
+}
+.boardingPassActionsContainer {
+    display: flex;
+    border: none;
+    margin-top: auto;
+    padding: 5px;
+    
+}
+
+.boardingPassAction {
+    flex: 1;
+  margin-left: 10px;
+}
+
+.edit {
+  border-radius: 5px;
+}
+/* show page */
+.addTrip {
+    border-radius: 5px;
+    border: none;
+    margin: 5px;
+}
+.trip, .activity {
+    display: flex;
+}
+.editTrip {
+ flex: 1;
+ border-radius: 5px;
+ border: none;
+}
+.deleteTrip {
+flex: 1;
+border-radius: 5px;
+border: none;
+float: right;
+}

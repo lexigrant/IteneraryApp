@@ -4,19 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
-<body>
+<body class="new">
+    <div class="addNew">
     <h1>Add a Trip</h1>
     <nav>
-        <a href="/itenerary/<%= IteneraryId %>"><button>Back</button></a>
+        <a href="/itenerary/<%= IteneraryId %>"><button class="skyButton">Back</button></a>
     </nav>
-    <form action="/itenerary/<%=IteneraryId%>/trip/new/?_method=POST" method="POST">
-        <input type="text" name="name" placeholder="Location"/><br/>
-        <input type="text" name="transportationTo" placeholder="Transportation To"/><br/>
-        <input type="text" name="transportation" placeholder="Transportation"/><br/>
-        <input type="text" name="lodging" placeholder="Lodging"/><br/>
-        <input type="submit" value="Create New Trip"/><br/>
+    </div>
+    <div class="form-control-lg">
+    <form action="/itenerary/<%=IteneraryId%>/trip/new/?_method=POST" method="POST" class="text-center newForm">
+        <input class="form-control" type="text" name="name" placeholder="Location"/><br/>
+        <input class="form-control" type="text" name="transportationTo" placeholder="Transportation To"/><br/>
+        <input class="form-control" type="text" name="transportation" placeholder="Transportation"/><br/>
+        <input class="form-control" type="text" name="lodging" placeholder="Lodging"/><br/>
+        <input class=" btn btn-light" type="submit" value="Create New Trip"/><br/>
     </form>
+    </div>
 </body>
 </html>
