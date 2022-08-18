@@ -3,7 +3,6 @@
 .new {
     background-color: rgb(95,158,211);
 }
-
 .addNew {
     text-align: center;
     color: aliceblue;
@@ -22,6 +21,7 @@
     margin-top: 50px;
 }
 /* index page */
+
 .location {
     color: black;
 }
@@ -60,22 +60,82 @@
   border-radius: 5px;
 }
 /* show page */
+
+
 .addTrip {
     border-radius: 5px;
     border: none;
+}
+.trip {
+    /* flex-direction: column; */
+    display: flex;
+    /* border: 1px solid black; */
+    float: right;
     margin: 5px;
 }
-.trip, .activity {
+.activity {
     display: flex;
+    float: right;
+    margin: 5px;
+    /* flex-direction: column; */
 }
 .editTrip {
  flex: 1;
  border-radius: 5px;
  border: none;
+ margin-right: 5px;
 }
 .deleteTrip {
-flex: 1;
+/* flex: ; */
 border-radius: 5px;
 border: none;
-float: right;
+}
+
+.noBullet {
+    list-style: none;
+}
+.activityDetails {
+    display: table;
+    /* margin-left: 280px; */
+    /* border: 1px solid black; */
+}
+.tripName {
+  
+    text-align: center;
+}
+.everything {
+    background-color: aliceblue;
+    margin: 25px;
+}
+.backButton {
+    color: black;
+    background-color: aliceblue;
+    /* float: right; */
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    
+}
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.ulStyling {
+    width: 20%;
+    text-align: center;
+    list-style-type: none;
+    padding-inline-start: 0px;
+
+}
+
+.emptySpace {
+    width: 70px;
+}
+
+.iteneraryEverything {
+    display: flex;
+    /* border: 1px solid black ; */
+    justify-content: center;
+    margin-left: 165px;
 }
