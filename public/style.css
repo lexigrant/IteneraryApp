@@ -137,5 +137,13 @@ border: none;
     display: flex;
     /* border: 1px solid black ; */
     justify-content: center;
-    margin-left: 165px;
+}
+
+.addIteneraryButton {
+    color: black;
+    background-color: aliceblue;
+    
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
 }
